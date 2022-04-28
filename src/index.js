@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route, Routes, Navigate, Switch } from "react-router-dom";
+
+import "bootstrap/dist/css/bootstrap.css";
+import AppWordGame from './WordGame/AppWordGame';
+import AppNumberGame from './NumberGame/AppNumberGame';
+import AppRoutes from './AppRoutes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <AppRoutes />
   </React.StrictMode>
 );
 

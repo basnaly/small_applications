@@ -1,0 +1,26 @@
+
+.parent {
+    font-size: 24px;
+    margin: auto;
+
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: 100px repeat(5, 60px);
+    border: 1px solid gray;
+    grid-template-areas: "a a a a"
+                         "b b c d"
+                         "e f g h"
+                         "i j k l"
+                         "m n o p"
+                         "s s t p";
+}
+
+.grid > div {
+    border: 1px solid gray;
+    text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+}
