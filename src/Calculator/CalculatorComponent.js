@@ -35,17 +35,27 @@ const CalculatorComponent = () => {
 
     const clickNumber = (number) => {
         if (!SYMBOLS.includes(lastClick)) {
-            setLastClick(prev => prev == 0 ? number : prev + '' + number)
+            setLastClick(prev => {
+                if (prev.endsWith('.')) {
+                    return prev;
+                }
+                return prev == 0 ? '' + number : prev + '' + number
+            })
         } else {
-            setLastClick(number)
+            setLastClick(number + '')
         }
 
         if (equalClick === true) {
-            setFullEquation(number);
+            setFullEquation(number + '');
             setEqualClick(false);
-            setLastClick(number);
+            setLastClick(number + '');
         } else {
-            setFullEquation(prev => prev == 0 ? number : prev + '' + number);
+            setFullEquation(prev => {
+                if (prev.endsWith('.')) {
+                    return prev;
+                }
+                return prev == 0 ? '' + number : prev + '' + number
+            });
         }          
     }
 
@@ -54,9 +64,14 @@ const CalculatorComponent = () => {
             setFullEquation(lastClick + symbol);
             setEqualClick(false);
         } else {
-            setFullEquation(prev => prev + symbol);
+            setFullEquation(prev => {
+                if (SYMBOLS.includes(lastClick) && symbol !== '-') {
+                    prev = prev.slice(0, -1)
+                }
+                return prev + symbol
+            });
         }
-        setLastClick(symbol);     
+        setLastClick(symbol);    
     }
 
     const clickEqual = () => {
@@ -73,81 +88,112 @@ const CalculatorComponent = () => {
     return (
         <div className="parent d-flex flex-column align-items-center">
             <div className="grid">
-                <div className="d-flex flex-column align-items-end justify-content-end px-2"
+                <div className="result d-flex flex-column align-items-end justify-content-end px-2"
                     style={ {gridArea: 'a'} }>
                     <div>{ fullEquation }</div>
-                    <div>
-                        
-                        { lastClick }
-                    
+                    <div id="display">
+                        { lastClick ?? 0 }
                     </div>
                 </div>
-                <div style={ {gridArea: 'b'} }
+                <div className="ac" 
+                    style={ {gridArea: 'b'} }
+                    id="clear"
                     onClick={ clickClean }>
                     AC
                 </div>
-                <div style={ {gridArea: 'c'} }
+                <div className="operators"
+                    style={ {gridArea: 'c'} }
+                    id="divide"
                     onClick={ () => clickSymbols('/') }>
                     /
                 </div>
-                <div style={ {gridArea: 'd'} }
+                <div className="operators"
+                    style={ {gridArea: 'd'} }
+                    id="multiply"
                     onClick={ () => clickSymbols('*') }>
                     *
                 </div>
-                <div style={ {gridArea: 'e'} }
+                <div className="numbers" 
+                    style={ {gridArea: 'e'} }
+                    id="seven"
                     onClick={ () => clickNumber(7) }>
                     7
                 </div>
-                <div style={ {gridArea: 'f'} }
+                <div className="numbers"
+                    style={ {gridArea: 'f'} }
+                    id="eight"
                     onClick={ () => clickNumber(8) }>
                     8
                 </div>
-                <div style={ {gridArea: 'g'} }
+                <div className="numbers"
+                    style={ {gridArea: 'g'} }
+                    id="nine"
                     onClick={ () => clickNumber(9) }>
                     9
                 </div>
-                <div style={ {gridArea: 'h'} }
+                <div className="operators"
+                    style={ {gridArea: 'h'} }
+                    id="subtract"
                     onClick={ () => clickSymbols('-') }>
                     -
                 </div>
-                <div style={ {gridArea: 'i'} }
+                <div className="numbers"
+                    style={ {gridArea: 'i'} }
+                    id="four"
                     onClick={ () => clickNumber(4) }>
                     4
                 </div>
-                <div style={ {gridArea: 'j'} }
+                <div className="numbers"
+                    style={ {gridArea: 'j'} }
+                    id="five"
                     onClick={ () => clickNumber(5) }>
                     5
                 </div>
-                <div style={ {gridArea: 'k'} }
+                <div className="numbers"
+                    style={ {gridArea: 'k'} }
+                    id="six"
                     onClick={ () => clickNumber(6) }>
                     6
                 </div>
-                <div style={ {gridArea: 'l'} }
+                <div className="operators"
+                    style={ {gridArea: 'l'} }
+                    id="add"
                     onClick={ () => clickSymbols('+') }>
                     +
                 </div>
-                <div style={ {gridArea: 'm'} }
+                <div className="numbers"
+                    style={ {gridArea: 'm'} }
+                    id="one"
                     onClick={ () => clickNumber(1) }>
                     1
                 </div>
-                <div style={ {gridArea: 'n'} }
+                <div className="numbers"
+                    style={ {gridArea: 'n'} }
+                    id="two"
                     onClick={ () => clickNumber(2) }>
                     2
                 </div>
-                <div style={ {gridArea: 'o'} }
+                <div className="numbers"
+                    style={ {gridArea: 'o'} }
+                    id="three"
                     onClick={ () => clickNumber(3) }>
                     3
                 </div>
-                <div style={ {gridArea: 'p'} }
-                    className="d-flex justify-content-center align-items-center"
+                <div className="equal d-flex justify-content-center align-items-center"
+                    style={ {gridArea: 'p'} }
+                    id="equals"
                     onClick={ clickEqual }>
                     <div >=</div>
                 </div>
-                <div style={ {gridArea: 's'} }
+                <div className="numbers"
+                    style={ {gridArea: 's'} }
+                    id="zero"
                     onClick={ () => clickNumber(0) }>
                     0
                 </div>
-                <div style={ {gridArea: 't'} }
+                <div className="numbers"
+                    style={ {gridArea: 't'} }
+                    id="decimal"
                     onClick={ () => clickNumber('.') }>
                     .
                 </div>    

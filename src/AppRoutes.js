@@ -6,6 +6,7 @@ import AppWordGame from "./WordGame/AppWordGame";
 import AppCalc from './TipCalculator/AppCalc';
 import MeComponent from "./MeComponent";
 import AppCalculator from "./Calculator/AppCalculator";
+import AppLearnWords from "./LearnWords/AppLearnWords";
 
 const styles = {
     home: {
@@ -44,6 +45,9 @@ const Home = () => {
                 <li>
                     <Link to='/app-calculator'>AppCalculator</Link>
                 </li>
+                <li>
+                    <Link to='/app-learn-words'>AppLearnWords</Link>
+                </li>
             </ul>
         </div>
     )
@@ -62,12 +66,13 @@ const AppRoutes = () => {
             </div>
             <div>
                 <Routes>
-                    <Route path='/home' element={<Home />} />
-                    <Route path='/app-number-game' element={<AppNumberGame />} />
-                    <Route path='/app-tip-calc' element={<AppCalc />} />
-                    <Route path='/app-word-game' element={<AppWordGame />} />
-                    <Route path='/app-calculator' element={<AppCalculator />} />
-                    <Route exact path="*" element={<Navigate replace to="/home" />} />
+                    <Route path='/home' element={ <Home /> } />
+                    <Route path='/app-number-game' element={ <AppNumberGame /> } />
+                    <Route path='/app-tip-calc' element={ <AppCalc /> } />
+                    <Route path='/app-word-game' element={ <AppWordGame /> } />
+                    <Route path='/app-calculator' element={ <AppCalculator /> } />
+                    <Route path='/app-learn-words' element={ <AppLearnWords /> } />
+                    <Route exact path="*" element={ <Navigate replace to="/home" /> } />
                 </Routes>
             </div>
             <MeComponent />

@@ -19,8 +19,37 @@
 }
 
 .grid > div {
-    border: 1px solid gray;
+    border: 1px solid black;
     text-align: center;
     padding: 10px 0;
     cursor: pointer;
+}
+
+.result {
+    background-color:dimgray;
+    color: yellow;
+}
+
+.ac {
+    background-color: lightsalmon;
+    color: yellow;
+    font-weight: bold;
+}
+
+.numbers {
+    background-color: lightsteelblue;
+    color: yellow;
+    font-weight: bold;
+}
+
+.equal {
+    background-color: salmon;
+    color: yellow;
+    font-weight: bold;
+}
+
+.operators {
+    background-color:steelblue;
+    color: yellow;
+    font-weight: bold;
 }
