@@ -7,6 +7,7 @@ import AppCalc from './TipCalculator/AppCalc';
 import MeComponent from "./MeComponent";
 import AppCalculator from "./Calculator/AppCalculator";
 import AppLearnWords from "./LearnWords/AppLearnWords";
+import AppMarkdownPreviewer from "./MarkdownPreviewer/AppMarkdownPreviewer";
 
 const styles = {
     home: {
@@ -48,6 +49,9 @@ const Home = () => {
                 <li>
                     <Link to='/app-learn-words'>AppLearnWords</Link>
                 </li>
+                <li>
+                    <Link to='/app-markdown-previewer'>AppMarkdownPreviewer</Link>
+                </li>
             </ul>
         </div>
     )
@@ -72,6 +76,7 @@ const AppRoutes = () => {
                     <Route path='/app-word-game' element={ <AppWordGame /> } />
                     <Route path='/app-calculator' element={ <AppCalculator /> } />
                     <Route path='/app-learn-words' element={ <AppLearnWords /> } />
+                    <Route path='/app-markdown-previewer' element={ <AppMarkdownPreviewer /> } />
                     <Route exact path="*" element={ <Navigate replace to="/home" /> } />
                 </Routes>
             </div>

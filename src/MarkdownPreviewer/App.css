@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+}
+
+.parent {
+  margin: 20px 200px;
+
+}
+
+.prev {
+  border: 1px solid gray;
+  padding: 10px;
+  margin-left: 0px !important;
+  resize: both;
+}
+
+pre {
+  overflow:unset;
+}

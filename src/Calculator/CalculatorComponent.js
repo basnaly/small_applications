@@ -24,9 +24,9 @@ const calculate = (string) => {
 
 const CalculatorComponent = () => {
 
-    const [fullEquation, setFullEquation] = useState('');
-    const [lastClick, setLastClick] = useState('');
-    const [equalClick, setEqualClick] = useState(false);
+    const [fullEquation, setFullEquation] = useState(''); //upper display part
+    const [lastClick, setLastClick] = useState(''); // lower display part
+    const [equalClick, setEqualClick] = useState(false); // avoid double =
 
     const clickClean = () => {
         setLastClick('');
@@ -34,10 +34,10 @@ const CalculatorComponent = () => {
     }
 
     const clickNumber = (number) => {
-        if (!SYMBOLS.includes(lastClick)) {
+        if (!SYMBOLS.includes(lastClick)) { //last click not one of symb
             setLastClick(prev => {
-                if (prev.endsWith('.')) {
-                    return prev;
+                if (prev.endsWith('.') && number === '.') { // if last click finished wit/h .
+                    return prev; //and curren
                 }
                 return prev == 0 ? '' + number : prev + '' + number
             })
@@ -51,8 +51,8 @@ const CalculatorComponent = () => {
             setLastClick(number + '');
         } else {
             setFullEquation(prev => {
-                if (prev.endsWith('.')) {
-                    return prev;
+                if (prev.endsWith('.') && number === '.') { // if last click finished with .
+                    return prev; //and curren
                 }
                 return prev == 0 ? '' + number : prev + '' + number
             });
@@ -75,12 +75,12 @@ const CalculatorComponent = () => {
     }
 
     const clickEqual = () => {
-        if(equalClick) {
+        if (equalClick) {
             return
         }
         let result = eval(fullEquation);
         console.log(result)
-        setLastClick(result);
+        setLastClick('' + result);
         setFullEquation(prev => prev + "=" + result);
         setEqualClick(true);
     }
