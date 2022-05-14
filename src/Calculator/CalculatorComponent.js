@@ -4,85 +4,80 @@ import '../Calculator/Calculator.css';
 
 const SYMBOLS = ['*', '/', '+', '-'];
 
-const calculate = (string) => {
-    for (let element of SYMBOLS) {
-        let re = new RegExp(`(\\d+(\\${element}\\d+)+)`, 'gi');
-        let matchExpr = string.match(re) || [];
-        console.log(string)
-        for (let match of matchExpr) {
-            let numbers = match.split(element);
-            let result = '';
-            if (element === '*') result = numbers.reduce((acc, curr) => +curr * acc, 1);
-            else if (element === '/') result = numbers.reduce((acc, curr, i) => i === 0 ? +curr : acc / +curr, 1);
-            else if (element === '+') result = numbers.reduce((acc, curr) => +curr + acc, 0);
-            else if (element === '-') result = numbers.reduce((acc, curr, i) => i === 0 ? +curr : acc - +curr, 1);
-            string = string.replace(match, result);
-        }
-    }
-    return string;
-}
+// const calculate = (string) => {
+//     for (let element of SYMBOLS) {
+//         let re = new RegExp(`(\\d+(\\${element}\\d+)+)`, 'gi');
+//         let matchExpr = string.match(re) || [];
+//         console.log(string)
+//         for (let match of matchExpr) {
+//             let numbers = match.split(element);
+//             let result = '';
+//             if (element === '*') result = numbers.reduce((acc, curr) => +curr * acc, 1);
+//             else if (element === '/') result = numbers.reduce((acc, curr, i) => i === 0 ? +curr : acc / +curr, 1);
+//             else if (element === '+') result = numbers.reduce((acc, curr) => +curr + acc, 0);
+//             else if (element === '-') result = numbers.reduce((acc, curr, i) => i === 0 ? +curr : acc - +curr, 1);
+//             string = string.replace(match, result);
+//         }
+//     }
+//     return string;
+// }
 
 const CalculatorComponent = () => {
 
-    const [fullEquation, setFullEquation] = useState(''); //upper display part
-    const [lastClick, setLastClick] = useState(''); // lower display part
-    const [equalClick, setEqualClick] = useState(false); // avoid double =
+    const [equation, setEquation] = useState('');
+    const [lowerDisplay, setLowerDisplay] = useState('');
 
     const clickClean = () => {
-        setLastClick('');
-        setFullEquation('');
+        setEquation('');
+        setLowerDisplay('');
     }
 
-    const clickNumber = (number) => {
-        if (!SYMBOLS.includes(lastClick)) { //last click not one of symb
-            setLastClick(prev => {
-                if (prev.endsWith('.') && number === '.') { // if last click finished wit/h .
-                    return prev; //and curren
-                }
-                return prev == 0 ? '' + number : prev + '' + number
-            })
-        } else {
-            setLastClick(number + '')
+    const clickNumber = number => {
+        if (lowerDisplay.endsWith('.') && number === '.') {
+            return
         }
-
-        if (equalClick === true) {
-            setFullEquation(number + '');
-            setEqualClick(false);
-            setLastClick(number + '');
-        } else {
-            setFullEquation(prev => {
-                if (prev.endsWith('.') && number === '.') { // if last click finished with .
-                    return prev; //and curren
-                }
-                return prev == 0 ? '' + number : prev + '' + number
-            });
-        }          
+        else if (lowerDisplay === '0' && number === 0) {
+            return
+        }
+        else if (lowerDisplay === '0' && number > 0) {
+            setLowerDisplay(number + '');
+            setEquation(prev => prev.slice(0, -1) + number + '');
+        } 
+        else if (equation.includes('=')){
+            setLowerDisplay(number + '');
+            setEquation(number + '');
+        } else { // 5 + 3; 55; 5.4
+            setEquation(prev => prev + number + '');
+            if (!isNaN(lowerDisplay)) {
+                setLowerDisplay(prev => prev + number + ''); //55
+            } else {
+                setLowerDisplay(number + ''); // 5 + 3
+            }   
+        }     
     }
 
-    const clickSymbols = (symbol) => {
-        if (equalClick === true) {
-            setFullEquation(lastClick + symbol);
-            setEqualClick(false);
+    const clickSymbols = symbol => {
+        if (equation.includes('=')) {
+            setEquation(lowerDisplay + symbol);
+        } 
+        else if (SYMBOLS.includes(lowerDisplay) && symbol !== '-') {
+            setEquation(prev => prev.slice(0, -1) + symbol)
+        } 
+        else if (lowerDisplay === '-'  && symbol === '-') {
+            return
         } else {
-            setFullEquation(prev => {
-                if (SYMBOLS.includes(lastClick) && symbol !== '-') {
-                    prev = prev.slice(0, -1)
-                }
-                return prev + symbol
-            });
+            setEquation(prev => prev + symbol);
         }
-        setLastClick(symbol);    
+        setLowerDisplay(symbol);
     }
 
     const clickEqual = () => {
-        if (equalClick) {
+        if (equation.includes('=')) {
             return
         }
-        let result = eval(fullEquation);
-        console.log(result)
-        setLastClick('' + result);
-        setFullEquation(prev => prev + "=" + result);
-        setEqualClick(true);
+        let result = eval(equation);
+        setEquation(equation + '=' + result);
+        setLowerDisplay(result + '');
     }
 
     return (
@@ -90,9 +85,9 @@ const CalculatorComponent = () => {
             <div className="grid">
                 <div className="result d-flex flex-column align-items-end justify-content-end px-2"
                     style={ {gridArea: 'a'} }>
-                    <div>{ fullEquation }</div>
+                    <div>{ equation }</div>
                     <div id="display">
-                        { lastClick ?? 0 }
+                        { lowerDisplay ?? 0 }
                     </div>
                 </div>
                 <div className="ac" 

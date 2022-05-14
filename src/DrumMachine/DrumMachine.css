@@ -1,0 +1,40 @@
+.parent-drum {
+    margin-top: calc((100vh - 400px) / 2);
+    margin-left: calc((100vw - 700px) / 2);
+    width: 700px;
+    height: 400px;
+    background-color: honeydew;
+    border: 3px solid yellowgreen;
+    border-radius: 10px;
+}
+
+.grid-drum {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 80px);
+    gap: 20px;
+    grid-template-areas: "a b c"
+                         "d e f"
+                         "g h i";
+}
+
+.grid-drum > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid gray;
+    border-radius: 10px;
+    text-align: center;
+    background-color: yellow;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.display-drum {
+    width: 200px;
+    height: 70px;
+    border: 2px solid gray;
+    background-color: yellow;
+    border-radius: 5px;
+    margin: 20px;
+}

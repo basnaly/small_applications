@@ -8,6 +8,7 @@ import MeComponent from "./MeComponent";
 import AppCalculator from "./Calculator/AppCalculator";
 import AppLearnWords from "./LearnWords/AppLearnWords";
 import AppMarkdownPreviewer from "./MarkdownPreviewer/AppMarkdownPreviewer";
+import AppDrumMachine from "./DrumMachine/AppDrumMachine";
 
 const styles = {
     home: {
@@ -52,6 +53,9 @@ const Home = () => {
                 <li>
                     <Link to='/app-markdown-previewer'>AppMarkdownPreviewer</Link>
                 </li>
+                <li>
+                    <Link to='/app-drum-machine'>AppDrumMachine</Link>
+                </li>
             </ul>
         </div>
     )
@@ -77,6 +81,7 @@ const AppRoutes = () => {
                     <Route path='/app-calculator' element={ <AppCalculator /> } />
                     <Route path='/app-learn-words' element={ <AppLearnWords /> } />
                     <Route path='/app-markdown-previewer' element={ <AppMarkdownPreviewer /> } />
+                    <Route path='/app-drum-machine' element={ <AppDrumMachine /> } />
                     <Route exact path="*" element={ <Navigate replace to="/home" /> } />
                 </Routes>
             </div>
