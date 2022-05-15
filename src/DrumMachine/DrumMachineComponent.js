@@ -90,7 +90,8 @@ const DrumMachineComponent = () => {
     }
 
     return (
-        <div className="parent-drum d-flex align-items-center justify-content-evenly">
+        <div className="parent-drum d-flex align-items-center justify-content-evenly"
+            id="drum-machine">
             <div className="grid-drum m-4">
                 {
                     (bank ? SmoothPianoKit : HeaterKit).map(el => (
@@ -98,8 +99,12 @@ const DrumMachineComponent = () => {
                             id={ el.name }
                             key={ el.name }
                             style={ {gridArea: el.gridArea} }
-                            onClick={ () => playAudio(el.src, el.name) }>
-                                { el.text }
+                            onClick={ () => playAudio(el.src, el.name) }>      
+                            <audio id={ el.text } 
+                                src={ el.src }
+                                className='clip'>
+                            </audio>
+                            { el.text }
                         </div>
                     ))
                 }
@@ -116,7 +121,8 @@ const DrumMachineComponent = () => {
                         onChange={ () => setPower(!power) }
                     />
                 </Form>
-                <div className="display-drum d-flex flex-column align-items-center">
+                <div className="display-drum d-flex flex-column align-items-center"
+                    id="display">
                     { display }
                 </div>
 
