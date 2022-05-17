@@ -70,10 +70,6 @@ const ExpenseComponent = () => {
 
     const dispatch = useDispatch();
 
-    const ChangePayment = () => {
-
-    }
-
     const saveBudget = (e) => {
 
         let addBudget = {

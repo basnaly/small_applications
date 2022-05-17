@@ -3,13 +3,10 @@ import { useState } from "react";
 
 import { InputGroup, FormControl, CloseButton } from 'react-bootstrap';
 import { INPUT_CODE } from './Constant';
-import ReactMarkdown from 'react-markdown';
 import Markdown from 'marked-react';
 import Lowlight from 'react-lowlight';
 import javascript from 'highlight.js/lib/languages/javascript';
-import hljs from 'highlight.js';
 import 'highlight.js/styles/a11y-light.css';
-
 
 Lowlight.registerLanguage('js', javascript);
 
@@ -22,9 +19,6 @@ const renderer = {
 const MarkdownPreviewerComponent = () => {
 
     const [code, setCode] = useState(INPUT_CODE);
-
-    const codePieces = code.split(/\n```+```\n/);
-    console.log(codePieces.length)
 
     return (
         <div className='d-flex flex-column vh-100 overflow-auto'>
@@ -52,9 +46,8 @@ const MarkdownPreviewerComponent = () => {
                     </InputGroup.Text>
                     <div className="prev d-flex flex-column overflow-auto"
                         id="preview">
-                        {codePieces.map((el, i) => <Markdown value={el } 
+                        <Markdown value={ code } 
                                     renderer={renderer} />
-                        )}
                     </div>
                 </InputGroup>
 

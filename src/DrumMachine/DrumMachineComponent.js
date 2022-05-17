@@ -1,11 +1,7 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 
 import '../DrumMachine/DrumMachine.css';
-import {
-    Form, Dropdown,
-    InputGroup, FormControl,
-    DropdownButton, Card
-} from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Slider } from "@mui/material";
 import 'rc-slider/assets/index.css';
 
@@ -61,16 +57,22 @@ const DrumMachineComponent = () => {
         setVolume(value)
     }
 
-    const playAudio = (src, id) => {
-
+    const playAudio = (src, id, event) => {
+        
         if (power === false) {
             return
         }
 
+        // 1-st
         const audio = new Audio(src);
         audio.volume = volume / 100; 
         audio.play();
-  
+
+        //2-nd
+        // const audio = event.target.children[0]
+        // audio.volume = volume / 100; 
+        // audio.play();
+        
         setDisplay(id.replaceAll('-', ' '))
     }
     
@@ -99,7 +101,7 @@ const DrumMachineComponent = () => {
                             id={ el.name }
                             key={ el.name }
                             style={ {gridArea: el.gridArea} }
-                            onClick={ () => playAudio(el.src, el.name) }>      
+                            onClick={ (event) => playAudio(el.src, el.name, event) }>      
                             <audio id={ el.text } 
                                 src={ el.src }
                                 className='clip'>
@@ -108,9 +110,10 @@ const DrumMachineComponent = () => {
                         </div>
                     ))
                 }
-
             </div>
+
             <div className="d-flex flex-column">
+
                 <Form className="d-flex flex-column align-items-center">
                     <div>Power</div>
                     <Form.Check
@@ -121,6 +124,7 @@ const DrumMachineComponent = () => {
                         onChange={ () => setPower(!power) }
                     />
                 </Form>
+
                 <div className="display-drum d-flex flex-column align-items-center"
                     id="display">
                     { display }
@@ -145,68 +149,8 @@ const DrumMachineComponent = () => {
                 </Form>
 
             </div>
-
-
         </div>
     )
 }
 
 export default DrumMachineComponent;
-
-
-
-                // <div className="q shadow"
-                //     style={{ gridArea: 'a' }}
-                //     id="q"
-                //     onClick={ () => playAudio(0) }>
-                        
-                //     Q
-                // </div>
-                // <div className="w shadow"
-                //     style={{ gridArea: 'b' }}
-                //     id="w"
-                //     onClick={() => { }}>
-                //     W
-                // </div>
-                // <div className="e shadow"
-                //     style={{ gridArea: 'c' }}
-                //     id="e"
-                //     onClick={() => { }}>
-                //     E
-                // </div>
-                // <div className="a shadow"
-                //     style={{ gridArea: 'd' }}
-                //     id="a"
-                //     onClick={() => { }}>
-                //     A
-                // </div>
-                // <div className="s shadow"
-                //     style={{ gridArea: 'e' }}
-                //     id="s"
-                //     onClick={() => { }}>
-                //     S
-                // </div>
-                // <div className="d shadow"
-                //     style={{ gridArea: 'f' }}
-                //     id="d"
-                //     onClick={() => { }}>
-                //     D
-                // </div>
-                // <div className="z shadow"
-                //     style={{ gridArea: 'g' }}
-                //     id="z"
-                //     onClick={() => { }}>
-                //     Z
-                // </div>
-                // <div className="x shadow"
-                //     style={{ gridArea: 'h' }}
-                //     id="x"
-                //     onClick={() => { }}>
-                //     X
-                // </div>
-                // <div className="c shadow"
-                //     style={{ gridArea: 'i' }}
-                //     id="c"
-                //     onClick={() => { }}>
-                //     C
-                // </div> 
