@@ -1,0 +1,21 @@
+.parent-stl {
+    background-color: lightskyblue;
+    height: 100vh;
+}
+
+.title-stl {
+    font-size: 40px;
+}
+
+.row-stl th {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.body-stl td {
+    font-size: 18px;
+}
+
+.input-stl input {
+    text-align: center;
+}

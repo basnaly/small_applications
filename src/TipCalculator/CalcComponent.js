@@ -6,11 +6,9 @@ import { Button } from 'react-bootstrap';
 const styles = {
     parent: {
         width: '500px',
-        margin: 'auto',
         border: '1px solid gray',
         borderRadius: '10px',
         backgroundColor: 'beige',
-        marginTop: '30px',
     },
     title: {
         fontSize: '28px',

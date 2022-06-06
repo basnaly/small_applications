@@ -1,0 +1,23 @@
+.parent-fcc {
+    background-color: lightskyblue;
+    height: 100vh;
+}
+
+.div-fcc {
+    font-size: 46px;
+    color: blue;
+}
+
+.border-fcc {
+    border: 10px outset white;
+}
+
+.data-fcc {
+    font-size: 30px;
+    margin: 10px;
+    color: yellow;
+}
+
+.img-fcc {
+    width: 80px;
+}

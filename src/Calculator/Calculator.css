@@ -1,11 +1,10 @@
 
-.parent {
+.parent-calc {
     font-size: 24px;
     margin: auto;
-
 }
 
-.grid {
+.grid-calc {
     display: grid;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: 100px repeat(5, 60px);
@@ -18,37 +17,37 @@
                          "s s t p";
 }
 
-.grid > div {
+.grid-calc > div {
     border: 1px solid black;
     text-align: center;
     padding: 10px 0;
     cursor: pointer;
 }
 
-.result {
+.result-calc {
     background-color:dimgray;
     color: yellow;
 }
 
-.ac {
+.ac-calc {
     background-color: lightsalmon;
     color: yellow;
     font-weight: bold;
 }
 
-.numbers {
+.numbers-calc {
     background-color: lightsteelblue;
     color: yellow;
     font-weight: bold;
 }
 
-.equal {
+.equal-calc {
     background-color: salmon;
     color: yellow;
     font-weight: bold;
 }
 
-.operators {
+.operators-calc {
     background-color:steelblue;
     color: yellow;
     font-weight: bold;

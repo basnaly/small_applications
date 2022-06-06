@@ -4,7 +4,7 @@ import CalculatorComponent from "./CalculatorComponent";
 const AppCalculator = () => {
 
     return (
-        <div className="d-flex vh-100">
+        <div className="d-flex align-items-center vh-100">
             <CalculatorComponent />
         </div>
     )

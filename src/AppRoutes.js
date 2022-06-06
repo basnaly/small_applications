@@ -10,6 +10,9 @@ import AppLearnWords from "./LearnWords/AppLearnWords";
 import AppMarkdownPreviewer from "./MarkdownPreviewer/AppMarkdownPreviewer";
 import AppDrumMachine from "./DrumMachine/AppDrumMachine";
 import App25and5Clock from "./25and5Clock/App25and5Clock";
+import AppFccWeather from "./FCCWeather/AppFccWeather";
+import AppWikiViewer from "./WikiViewer/AppWikiViewer";
+import AppStudents from "./Students/AppStudents";
 
 const styles = {
     home: {
@@ -60,6 +63,15 @@ const Home = () => {
                 <li>
                     <Link to='/app-25+5-clock'>App25and5Clock</Link>
                 </li>
+                <li>
+                    <Link to='/app-fcc-weather'>AppFccWeather</Link>
+                </li>
+                <li>
+                    <Link to='/app-wiki-viewer'>AppWikiViewer</Link>
+                </li>
+                <li>
+                    <Link to='/app-students'>AppStudents</Link>
+                </li>
             </ul>
         </div>
     )
@@ -87,6 +99,9 @@ const AppRoutes = () => {
                     <Route path='/app-markdown-previewer' element={ <AppMarkdownPreviewer /> } />
                     <Route path='/app-drum-machine' element={ <AppDrumMachine /> } />
                     <Route path='/app-25+5-clock' element={ <App25and5Clock /> } />
+                    <Route path='/app-fcc-weather' element={ <AppFccWeather /> } />
+                    <Route path='/app-wiki-viewer' element={ <AppWikiViewer /> } />
+                    <Route path='/app-students' element={ <AppStudents /> } />
                     <Route exact path="*" element={ <Navigate replace to="/home" /> } />
                 </Routes>
             </div>
