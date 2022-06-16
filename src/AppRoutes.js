@@ -13,6 +13,8 @@ import App25and5Clock from "./25and5Clock/App25and5Clock";
 import AppFccWeather from "./FCCWeather/AppFccWeather";
 import AppWikiViewer from "./WikiViewer/AppWikiViewer";
 import AppStudents from "./Students/AppStudents";
+import AppDynamicInputs from "./DynamicInputs/AppDynamicInputs";
+import AppPosts from './AppPosts/AppPosts';
 
 const styles = {
     home: {
@@ -72,6 +74,12 @@ const Home = () => {
                 <li>
                     <Link to='/app-students'>AppStudents</Link>
                 </li>
+                <li>
+                    <Link to='/app-dynamic-inputs'>AppDynamicInputs</Link>
+                </li>
+                <li>
+                    <Link to='/app-posts'>AppPosts</Link>
+                </li>
             </ul>
         </div>
     )
@@ -102,6 +110,8 @@ const AppRoutes = () => {
                     <Route path='/app-fcc-weather' element={ <AppFccWeather /> } />
                     <Route path='/app-wiki-viewer' element={ <AppWikiViewer /> } />
                     <Route path='/app-students' element={ <AppStudents /> } />
+                    <Route path='/app-dynamic-inputs' element={ <AppDynamicInputs /> } />
+                    <Route path='/app-posts' element={ <AppPosts /> } />
                     <Route exact path="*" element={ <Navigate replace to="/home" /> } />
                 </Routes>
             </div>
