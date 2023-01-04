@@ -5,16 +5,11 @@ import { applyMiddleware, compose, createStore } from "redux";
 import { Provider} from "react-redux";
 import { createLogger } from 'redux-logger';
 import thunk from "redux-thunk";
-import { BrowserRouter as Router, Route, Routes, Navigate, Switch } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.css";
-import AppWordGame from './WordGame/AppWordGame';
-import AppNumberGame from './NumberGame/AppNumberGame';
+
 import AppRoutes from './AppRoutes';
-import AppExpenseTracker from './ExpenseTracker/AppExpenseTracker';
-import TransactionReducer from './ExpenseTracker/TransactionReducer';
 import WordsReducer from './LearnWords/WordsReducer';
-import AppLearnWords from './LearnWords/AppLearnWords';
 
 const saveState = (listWords) => {
   console.log(listWords)
