@@ -11,15 +11,15 @@ import "bootstrap/dist/css/bootstrap.css";
 import AppRoutes from './AppRoutes';
 import WordsReducer from './LearnWords/WordsReducer';
 
-const saveState = (listWords) => {
-  console.log(listWords)
-  try {
-    const listWordsString = JSON.stringify(listWords);
-    localStorage.setItem('listWords', listWordsString);
-  } catch(err) {
-    console.log(err);
-  }
-};
+// const saveState = (listWords) => {
+//   console.log(listWords)
+//   try {
+//     const listWordsString = JSON.stringify(listWords);
+//     localStorage.setItem('listWords', listWordsString);
+//   } catch(err) {
+//     console.log(err);
+//   }
+// };
 
 const logger = createLogger({
 });
@@ -32,9 +32,9 @@ const store = createStore(
   )
 );
 
-store.subscribe(() => {
-  saveState(store.getState().listWords);
-});
+// store.subscribe(() => {
+//   saveState(store.getState().listWords);
+// });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
