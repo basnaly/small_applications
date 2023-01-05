@@ -8,17 +8,17 @@ import {
 } from "react-router-dom";
 
 import AppNumberGame from "./NumberGame/AppNumberGame";
-// import AppWordGame from "./WordGame/AppWordGame";
-// import AppCalc from "./TipCalculator/AppCalc";
+import AppWordGame from "./WordGame/AppWordGame";
+import AppCalc from "./TipCalculator/AppCalc";
 import MeComponent from "./MeComponent";
-// import AppCalculator from "./Calculator/AppCalculator";
-// import AppLearnWords from "./LearnWords/AppLearnWords";
-// import AppMarkdownPreviewer from "./MarkdownPreviewer/AppMarkdownPreviewer";
-// import AppDrumMachine from "./DrumMachine/AppDrumMachine";
-// import App25and5Clock from "./25and5Clock/App25and5Clock";
-// import AppFccWeather from "./FCCWeather/AppFccWeather";
-// import AppDynamicInputs from "./DynamicInputs/AppDynamicInputs";
-// import AppPricing from "./AppPricing/AppPricing";
+import AppCalculator from "./Calculator/AppCalculator";
+import AppLearnWords from "./LearnWords/AppLearnWords";
+import AppMarkdownPreviewer from "./MarkdownPreviewer/AppMarkdownPreviewer";
+import AppDrumMachine from "./DrumMachine/AppDrumMachine";
+import App25and5Clock from "./25and5Clock/App25and5Clock";
+import AppFccWeather from "./FCCWeather/AppFccWeather";
+import AppDynamicInputs from "./DynamicInputs/AppDynamicInputs";
+import AppPricing from "./AppPricing/AppPricing";
 
 const styles = {
 	home: {
@@ -49,7 +49,7 @@ const Home = () => {
 					<Link to="/app-number-game">NumberGame</Link>
 				</li>
 
-				{/* <li>
+				<li>
 					<Link to="/app-tip-calc">TipCalculator</Link>
 				</li>
 				<li>
@@ -60,8 +60,8 @@ const Home = () => {
 				</li>
 				<li>
 					<Link to="/app-learn-words">AppLearnWords</Link>
-				</li> */}
-				{/* <li>
+				</li>
+				<li>
 					<Link to="/app-markdown-previewer">
 						AppMarkdownPreviewer
 					</Link>
@@ -74,15 +74,15 @@ const Home = () => {
 				</li>
 				<li>
 					<Link to="/app-fcc-weather">AppFccWeather</Link>
-				</li> */}
+				</li>
 
-				{/* <li>
+				<li>
 					<Link to="/app-dynamic-inputs">AppDynamicInputs</Link>
 				</li>
 
 				<li>
 					<Link to="/app-pricing">AppPricing</Link>
-				</li> */}
+				</li>
 			</ul>
 		</div>
 	);
@@ -111,7 +111,7 @@ const AppRoutes = () => {
 						path="/app-number-game"
 						element={<AppNumberGame />}
 					/>
-					{/* <Route path="/app-tip-calc" element={<AppCalc />} />
+					<Route path="/app-tip-calc" element={<AppCalc />} />
 					<Route path="/app-word-game" element={<AppWordGame />} />
 					<Route path="/app-calculator" element={<AppCalculator />} />
 					<Route
@@ -125,8 +125,8 @@ const AppRoutes = () => {
 					<Route
 						path="/app-drum-machine"
 						element={<AppDrumMachine />}
-					/> */}
-					{/* <Route
+					/>
+					<Route
 						path="/app-25+5-clock"
 						element={<App25and5Clock />}
 					/>
@@ -143,7 +143,7 @@ const AppRoutes = () => {
 						exact
 						path="*"
 						element={<Navigate replace to="/home" />}
-					/> */}
+					/>
 				</Routes>
 			</div>
 			<MeComponent />
