@@ -25,7 +25,7 @@ const styles = {
 
 const WordsListComponent = () => {
 
-    const listWords = useSelector(state => state.listWords)
+    const listWords = useSelector(state => state?.words?.listWords)
 
     return (
         <div className="d-flex flex-column align-items-center my-4">

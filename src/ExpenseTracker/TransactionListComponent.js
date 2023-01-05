@@ -41,8 +41,8 @@ const TransactionListComponent = () => {
 
     const [addTransaction, setAddTransaction] = useState(false);
 
-    const transactionList = useSelector(state => state.transactionList);
-    const budget = useSelector(state => state.budget);
+    const transactionList = useSelector(state => state?.tracker?.transactionList);
+    const budget = useSelector(state => state?.tracker?.budget);
     console.log(budget)
 
     let total = +(transactionList.reduce((acc, curr) => acc + curr.sum , 0)).toFixed(2);

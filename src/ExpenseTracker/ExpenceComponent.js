@@ -60,7 +60,7 @@ const month = ["January", "February", "March", "April", "May", "June",
 
 const ExpenseComponent = () => {
 
-    const currentDate = useSelector(state => state.date);
+    const currentDate = useSelector(state => state?.tracker?.date);
     console.log(currentDate)
 
     let todayDate = new Date();

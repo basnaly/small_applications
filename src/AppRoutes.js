@@ -19,6 +19,7 @@ import App25and5Clock from "./25and5Clock/App25and5Clock";
 import AppFccWeather from "./FCCWeather/AppFccWeather";
 import AppDynamicInputs from "./DynamicInputs/AppDynamicInputs";
 import AppPricing from "./AppPricing/AppPricing";
+import AppExpenseTracker from "./ExpenseTracker/AppExpenseTracker";
 
 const styles = {
 	home: {
@@ -81,6 +82,10 @@ const Home = () => {
 				</li>
 
 				<li>
+					<Link to="/app-expense-tracker">AppExpenseTracker</Link>
+				</li>
+
+				<li>
 					<Link to="/app-pricing">AppPricing</Link>
 				</li>
 			</ul>
@@ -137,6 +142,11 @@ const AppRoutes = () => {
 					<Route
 						path="/app-dynamic-inputs"
 						element={<AppDynamicInputs />}
+					/>
+
+					<Route
+						path="/app-expense-tracker"
+						element={<AppExpenseTracker />}
 					/>
 					<Route path="/app-pricing" element={<AppPricing />} />
 					<Route

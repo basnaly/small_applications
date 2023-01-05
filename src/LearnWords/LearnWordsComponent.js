@@ -38,7 +38,7 @@ const LearnWordsComponent = () => {
     const [word, setWord] = useState('');
     const [description, setDescription] = useState('');
 
-    const listWords = useSelector(state => state.listWords);
+    const listWords = useSelector(state => state?.words?.listWords);
 
     const dispatch = useDispatch();
 
